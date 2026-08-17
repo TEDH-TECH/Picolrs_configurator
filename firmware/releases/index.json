@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "releases": [
+    {
+      "id": "v0.1.1",
+      "version": "v0.1.1",
+      "sourceRef": "v0.1.1",
+      "releasedAt": "2026-08-17",
+      "notes": "RP2350 RX power update.",
+      "targets": [
+        {
+          "id": "rp2350-rx-2400",
+          "label": "RP2350 RX 2.4 GHz",
+          "board": "RP2350",
+          "role": "RX",
+          "frequency": "2.4 GHz",
+          "region": "Not specified in this build",
+          "files": {
+            "fs": {
+              "name": "FS.UF2",
+              "path": "v0.1.1/RP2350_RX_2400/FS.UF2",
+              "sha256": "8e379dc77c40059e4004413672c7f2e7f71cf441ddefc9d38e9e70d01a49e685"
+            },
+            "firmware": {
+              "name": "FIRMWARE.UF2",
+              "path": "v0.1.1/RP2350_RX_2400/FIRMWARE.UF2",
+              "sha256": "28471edf973fc97adc0e5e44d09b1cb9cc31580837d1d3832bea5432591ad8ec"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "v0.1.0",
+      "version": "v0.1.0",
+      "sourceRef": "v0.1.0",
+      "releasedAt": "2026-08-11",
+      "notes": "Initial RP2350 RX 2.4 GHz release.",
+      "targets": [
+        {
+          "id": "rp2350-rx-2400",
+          "label": "RP2350 RX 2.4 GHz",
+          "board": "RP2350",
+          "role": "RX",
+          "frequency": "2.4 GHz",
+          "region": "Not specified in this build",
+          "files": {
+            "fs": {
+              "name": "FS.UF2",
+              "path": "v0.1.0/RP2350_RX_2400/FS.UF2",
+              "sha256": "530a9617c5279a518da5cb477629a577f1ff5acbd6c3de02a98a4b5341246414"
+            },
+            "firmware": {
+              "name": "FIRMWARE.UF2",
+              "path": "v0.1.0/RP2350_RX_2400/FIRMWARE.UF2",
+              "sha256": "f2585ba3958d50f1fa8cfc82e23b564f3abafac404bb5675b48ccc80285c32a0"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
