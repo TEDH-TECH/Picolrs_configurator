@@ -2,37 +2,54 @@
 
 https://configurator.tedh.in/
 
-Configure and flash a PicoLRS module from the browser. The configurator uses USB serial to read and save module settings, then provides the matching UF2 files for flashing.
+Configure and flash PicoLRS boards from the browser. There are two firmware options:
+
+- **PicoLRS (ELRS)**: our ExpressLRS port. Settings are changed over USB on the Parameters page.
+- **mLRS (MAVLink)**: MAVLink telemetry link. One UF2 file per device, flashed with BOOTSEL. No USB settings.
 
 ## What you need
 
-- A PicoLRS module connected by USB
+- A PicoLRS board, Version 1 (V1.1) or Version 2
 - Chrome or Edge with Web Serial enabled
 - A data USB cable
 
-## Configure a module
+## Configure a PicoLRS module
 
-1. Open the configurator and go to **USB**.
-2. Choose the PicoLRS USB device, then select **Read module**.
-3. In **Parameters**, set the bind phrase, region, RX/TX options, and UART baud rate.
-4. Save the settings, then read the module again to confirm them.
+1. Open **Parameters** and select **Connect USB**.
+2. Choose the PicoLRS USB device. The board details appear on the card.
+3. Set the bind phrase, region, RX/TX options, and UART baud rate.
+4. Save the settings, then select **Re-read** to confirm them.
 
 The module stores a bind UID, not the original bind phrase text. Keep the phrase you use recorded somewhere safe.
 
 ## Flash firmware
 
-1. Open **Flashing** and select the required firmware version.
-2. Enter bootloader mode from the configurator. The module appears as an `RPI-RP2` drive.
-3. Copy `FS.UF2` to the drive.
-4. If the board restarts, enter bootloader mode again.
-5. Copy `FIRMWARE.UF2` to the drive.
-6. Reconnect over USB and read the module to confirm it is responding.
+Open **Flashing**, pick the hardware version, then the target. The files for that combination appear after both are picked.
 
-Only flash firmware built for the selected target. The current release supports **RP2350 RX 2.4 GHz**.
+**PicoLRS**
+
+1. Enter bootloader mode from the configurator (needs USB connected on Parameters), or hold BOOTSEL while plugging in. The board appears as an `RP2350` drive.
+2. Copy `FS.UF2` to the drive.
+3. If the board restarts, enter bootloader mode again.
+4. Copy `FIRMWARE.UF2` to the drive.
+5. Reconnect over USB and read the module to confirm it is responding.
+
+**mLRS**
+
+1. Hold BOOTSEL while plugging in. The board appears as an `RP2350` drive.
+2. Copy the RX file for the drone receiver, or the TX file for the transmitter module.
+3. The board restarts by itself when the copy finishes.
+
+Only flash firmware built for your hardware version.
 
 ## Firmware versions
 
-- `v0.1.1`: RP2350 RX power update
-- `v0.1.0`: initial RP2350 RX 2.4 GHz release
+| Target | Hardware | Version | Notes |
+| --- | --- | --- | --- |
+| mLRS | V1.1, V2 | v1.4.03 (2026-11-21) | RX and TX |
+| PicoLRS | V1.1 | v0.1.1 | RX power update |
+| PicoLRS | V1.1 | v0.1.0 | Initial RX 2.4 GHz release |
+
+PicoLRS for Version 2 is not released yet.
 
 Firmware folders are permanent records. New firmware is added as a new version; an existing UF2 file is never replaced.

@@ -1,61 +1,128 @@
 {
-  "schemaVersion": 1,
-  "releases": [
+  "schemaVersion": 2,
+  "hardware": [
+    { "id": "v1.1", "label": "Version 1 (V1.1)", "description": "Direct SX1280 output, no external PA/LNA." },
+    { "id": "v2", "label": "Version 2", "description": "AT2401C PA/LNA front-end on GP23/GP24." }
+  ],
+  "targets": [
     {
-      "id": "v0.1.1",
-      "version": "v0.1.1",
-      "sourceRef": "v0.1.1",
-      "releasedAt": "2026-08-17",
-      "notes": "RP2350 RX power update.",
-      "targets": [
+      "id": "picolrs",
+      "label": "PicoLRS (ELRS)",
+      "description": "Our ExpressLRS port. Configure it over USB on the Parameters page.",
+      "usbConfig": true
+    },
+    {
+      "id": "mlrs",
+      "label": "mLRS (MAVLink)",
+      "description": "MAVLink telemetry link. One UF2 per device, flashed with BOOTSEL. No USB configuration.",
+      "usbConfig": false
+    }
+  ],
+  "pending": [
+    {
+      "target": "picolrs",
+      "hardware": "v2",
+      "reason": "A Version 2 build with the GP23/GP24 PA/LNA enabled is not released yet."
+    }
+  ],
+  "builds": [
+    {
+      "id": "mlrs-v2-2026-11-21",
+      "target": "mlrs",
+      "hardware": "v2",
+      "version": "v1.4.03",
+      "releasedAt": "2026-11-21",
+      "notes": "mLRS port for RP2354 + SX1280 with the V2 PA/LNA.",
+      "files": [
         {
-          "id": "rp2350-rx-2400",
-          "label": "RP2350 RX 2.4 GHz",
-          "board": "RP2350",
           "role": "RX",
-          "frequency": "2.4 GHz",
-          "region": "Not specified in this build",
-          "files": {
-            "fs": {
-              "name": "FS.UF2",
-              "path": "v0.1.1/RP2350_RX_2400/FS.UF2",
-              "sha256": "8e379dc77c40059e4004413672c7f2e7f71cf441ddefc9d38e9e70d01a49e685"
-            },
-            "firmware": {
-              "name": "FIRMWARE.UF2",
-              "path": "v0.1.1/RP2350_RX_2400/FIRMWARE.UF2",
-              "sha256": "28471edf973fc97adc0e5e44d09b1cb9cc31580837d1d3832bea5432591ad8ec"
-            }
-          }
+          "use": "Receiver in the drone",
+          "name": "mlrs_rx_v2.uf2",
+          "path": "mlrs/2026-11-21/V2/mlrs_rx_v2.uf2",
+          "sha256": "1ce775078315ab70ab08a2180f89a2c636b7a7c9c7490494d210e2ad10e99bee"
+        },
+        {
+          "role": "TX",
+          "use": "Transmitter module",
+          "name": "mlrs_tx_v2.uf2",
+          "path": "mlrs/2026-11-21/V2/mlrs_tx_v2.uf2",
+          "sha256": "d9dd4a163fefe9c6df0cbf14d5b6eedfa711eaf2d6cf5f245dcc9ccdd90d79ee"
         }
       ]
     },
     {
-      "id": "v0.1.0",
+      "id": "mlrs-v1.1-2026-11-21",
+      "target": "mlrs",
+      "hardware": "v1.1",
+      "version": "v1.4.03",
+      "releasedAt": "2026-11-21",
+      "notes": "mLRS port for RP2354 + SX1280.",
+      "files": [
+        {
+          "role": "RX",
+          "use": "Receiver in the drone",
+          "name": "mlrs_rx_v1_1.uf2",
+          "path": "mlrs/2026-11-21/V1.1/mlrs_rx_v1_1.uf2",
+          "sha256": "68f86b22d7e9eb580bc4f09e9bfbd14161788b8bf03ea15f362f6907e1443fd7"
+        },
+        {
+          "role": "TX",
+          "use": "Transmitter module",
+          "name": "mlrs_tx_v1_1.uf2",
+          "path": "mlrs/2026-11-21/V1.1/mlrs_tx_v1_1.uf2",
+          "sha256": "0d490ab0a46bb693248cadda9795754ff37cbaeaa2afdbec95dc7421164e5511"
+        }
+      ]
+    },
+    {
+      "id": "picolrs-v1.1-v0.1.1",
+      "target": "picolrs",
+      "hardware": "v1.1",
+      "version": "v0.1.1",
+      "releasedAt": "2026-08-17",
+      "notes": "RX power update.",
+      "files": [
+        {
+          "role": "RX",
+          "kind": "fs",
+          "use": "File system, flash first on a new install",
+          "name": "FS.UF2",
+          "path": "v0.1.1/RP2350_RX_2400/FS.UF2",
+          "sha256": "8e379dc77c40059e4004413672c7f2e7f71cf441ddefc9d38e9e70d01a49e685"
+        },
+        {
+          "role": "RX",
+          "kind": "firmware",
+          "use": "Receiver firmware",
+          "name": "FIRMWARE.UF2",
+          "path": "v0.1.1/RP2350_RX_2400/FIRMWARE.UF2",
+          "sha256": "28471edf973fc97adc0e5e44d09b1cb9cc31580837d1d3832bea5432591ad8ec"
+        }
+      ]
+    },
+    {
+      "id": "picolrs-v1.1-v0.1.0",
+      "target": "picolrs",
+      "hardware": "v1.1",
       "version": "v0.1.0",
-      "sourceRef": "v0.1.0",
       "releasedAt": "2026-08-11",
       "notes": "Initial RP2350 RX 2.4 GHz release.",
-      "targets": [
+      "files": [
         {
-          "id": "rp2350-rx-2400",
-          "label": "RP2350 RX 2.4 GHz",
-          "board": "RP2350",
           "role": "RX",
-          "frequency": "2.4 GHz",
-          "region": "Not specified in this build",
-          "files": {
-            "fs": {
-              "name": "FS.UF2",
-              "path": "v0.1.0/RP2350_RX_2400/FS.UF2",
-              "sha256": "530a9617c5279a518da5cb477629a577f1ff5acbd6c3de02a98a4b5341246414"
-            },
-            "firmware": {
-              "name": "FIRMWARE.UF2",
-              "path": "v0.1.0/RP2350_RX_2400/FIRMWARE.UF2",
-              "sha256": "f2585ba3958d50f1fa8cfc82e23b564f3abafac404bb5675b48ccc80285c32a0"
-            }
-          }
+          "kind": "fs",
+          "use": "File system, flash first on a new install",
+          "name": "FS.UF2",
+          "path": "v0.1.0/RP2350_RX_2400/FS.UF2",
+          "sha256": "530a9617c5279a518da5cb477629a577f1ff5acbd6c3de02a98a4b5341246414"
+        },
+        {
+          "role": "RX",
+          "kind": "firmware",
+          "use": "Receiver firmware",
+          "name": "FIRMWARE.UF2",
+          "path": "v0.1.0/RP2350_RX_2400/FIRMWARE.UF2",
+          "sha256": "f2585ba3958d50f1fa8cfc82e23b564f3abafac404bb5675b48ccc80285c32a0"
         }
       ]
     }
