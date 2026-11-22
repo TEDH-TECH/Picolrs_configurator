@@ -18,14 +18,34 @@
       "usbConfig": false
     }
   ],
-  "pending": [
+  "pending": [],
+  "builds": [
     {
+      "id": "picolrs-v2-v0.1.1",
       "target": "picolrs",
       "hardware": "v2",
-      "reason": "A Version 2 build with the GP23/GP24 PA/LNA enabled is not released yet."
-    }
-  ],
-  "builds": [
+      "version": "v0.1.1",
+      "releasedAt": "2026-11-22",
+      "notes": "Same v0.1.1 firmware as V1.1, with the V2 settings file that turns on the PA/LNA (GP23/GP24). Not yet tested on V2 hardware.",
+      "files": [
+        {
+          "role": "RX",
+          "kind": "fs",
+          "use": "V2 settings file system, flash first on a new install",
+          "name": "FS.UF2",
+          "path": "picolrs/2026-11-22/V2/FS.UF2",
+          "sha256": "349b561b7155ff17a22e8151b02748ba139703b579bf9c33ae4f2adf5c168355"
+        },
+        {
+          "role": "RX",
+          "kind": "firmware",
+          "use": "Receiver firmware (same file as V1.1)",
+          "name": "FIRMWARE.UF2",
+          "path": "v0.1.1/RP2350_RX_2400/FIRMWARE.UF2",
+          "sha256": "28471edf973fc97adc0e5e44d09b1cb9cc31580837d1d3832bea5432591ad8ec"
+        }
+      ]
+    },
     {
       "id": "mlrs-v2-2026-11-21",
       "target": "mlrs",

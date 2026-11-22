@@ -47,9 +47,10 @@ Only flash firmware built for your hardware version.
 | Target | Hardware | Version | Notes |
 | --- | --- | --- | --- |
 | mLRS | V1.1, V2 | v1.4.03 (2026-11-21) | RX and TX |
+| PicoLRS | V2 | v0.1.1 (2026-11-22) | Same firmware as V1.1, with the V2 `FS.UF2` that turns on the PA/LNA. Not yet tested on V2 hardware |
 | PicoLRS | V1.1 | v0.1.1 | RX power update |
 | PicoLRS | V1.1 | v0.1.0 | Initial RX 2.4 GHz release |
 
-PicoLRS for Version 2 is not released yet.
+PicoLRS V1.1 and V2 use the same `FIRMWARE.UF2`. The board settings (pins, power) live in `FS.UF2`, so always flash the `FS.UF2` for your hardware version.
 
 Firmware folders are permanent records. New firmware is added as a new version; an existing UF2 file is never replaced.
