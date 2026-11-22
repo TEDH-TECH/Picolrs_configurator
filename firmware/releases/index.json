@@ -1,20 +1,20 @@
 {
   "schemaVersion": 2,
   "hardware": [
-    { "id": "v1.1", "label": "Version 1 (V1.1)", "description": "Direct SX1280 output, no external PA/LNA." },
-    { "id": "v2", "label": "Version 2", "description": "AT2401C PA/LNA front-end on GP23/GP24." }
+    { "id": "v1.1", "label": "Version 1 (V1.1)", "description": "No amplifier" },
+    { "id": "v2", "label": "Version 2", "description": "With PA/LNA amplifier" }
   ],
   "targets": [
     {
       "id": "picolrs",
       "label": "PicoLRS (ELRS)",
-      "description": "Our ExpressLRS port. Configure it over USB on the Parameters page.",
+      "description": "ExpressLRS, settings over USB",
       "usbConfig": true
     },
     {
       "id": "mlrs",
       "label": "mLRS (MAVLink)",
-      "description": "MAVLink telemetry link. One UF2 per device, flashed with BOOTSEL. No USB configuration.",
+      "description": "MAVLink telemetry, BOOTSEL flash",
       "usbConfig": false
     }
   ],
@@ -26,7 +26,7 @@
       "hardware": "v2",
       "version": "v0.1.1",
       "releasedAt": "2026-11-22",
-      "notes": "Same v0.1.1 firmware as V1.1, with the V2 settings file that turns on the PA/LNA (GP23/GP24). Not yet tested on V2 hardware.",
+      "notes": "Includes the Version 2 settings file, which turns on the board's amplifier.",
       "files": [
         {
           "role": "RX",

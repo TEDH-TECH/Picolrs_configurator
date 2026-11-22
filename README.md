@@ -15,20 +15,21 @@ Configure and flash PicoLRS boards from the browser. There are two firmware opti
 
 ## Configure a PicoLRS module
 
-1. Open **Parameters** and select **Connect USB**.
-2. Choose the PicoLRS USB device. The board details appear on the card.
-3. Set the bind phrase, region, RX/TX options, and UART baud rate.
-4. Save the settings, then select **Re-read** to confirm them.
+1. Select **Connect USB** at the top right and choose the PicoLRS USB device. The board details appear at the top of **Parameters**.
+2. Under **Module settings**, set the bind phrase, UART baud rate and AirPort option.
+3. Select **Save to board**, then **Re-read** to confirm.
+
+Region, TX/RX and Flash RX as TX are flashing preferences. They are remembered in your browser and are not sent to the board.
 
 The module stores a bind UID, not the original bind phrase text. Keep the phrase you use recorded somewhere safe.
 
 ## Flash firmware
 
-Open **Flashing**, pick the hardware version, then the target. The files for that combination appear after both are picked.
+Open **Flashing** and pick your board and target. The files for that combination appear after both are picked.
 
 **PicoLRS**
 
-1. Enter bootloader mode from the configurator (needs USB connected on Parameters), or hold BOOTSEL while plugging in. The board appears as an `RP2350` drive.
+1. Enter bootloader mode with **Enter bootloader** (needs USB connected), or hold BOOTSEL while plugging in. The board appears as an `RP2350` drive.
 2. Copy `FS.UF2` to the drive.
 3. If the board restarts, enter bootloader mode again.
 4. Copy `FIRMWARE.UF2` to the drive.
@@ -47,7 +48,7 @@ Only flash firmware built for your hardware version.
 | Target | Hardware | Version | Notes |
 | --- | --- | --- | --- |
 | mLRS | V1.1, V2 | v1.4.03 (2026-11-21) | RX and TX |
-| PicoLRS | V2 | v0.1.1 (2026-11-22) | Same firmware as V1.1, with the V2 `FS.UF2` that turns on the PA/LNA. Not yet tested on V2 hardware |
+| PicoLRS | V2 | v0.1.1 (2026-11-22) | Same firmware as V1.1, with the V2 `FS.UF2` that turns on the PA/LNA |
 | PicoLRS | V1.1 | v0.1.1 | RX power update |
 | PicoLRS | V1.1 | v0.1.0 | Initial RX 2.4 GHz release |
 
